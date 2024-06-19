@@ -1,0 +1,9 @@
+{% extends "home.html" %}
+{% block title %} Send message {% endblock %}
+{% block content %}
+<form action="#" method="post">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+  <p>Are you sure you want to log out?</p>
+  <p><input type="submit" value="Yes" /></p>
+</form>
+{% endblock %}

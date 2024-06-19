@@ -1,0 +1,23 @@
+{% extends "home.html" %}
+{% block title %} My messages {% endblock %}
+{% block content %}
+<h1>Here is your message box:</h1>
+<ul>
+    {% if messages is none %}
+        <p>No messages found.</p>
+    {% else %}
+        {% for i in messages%}
+        <li>
+            <ul>
+                <li>Sender: {{i[1]}}</li>
+                <li>Recipient: {{i[2]}}</li>
+                <li>Time: {{i[3].strftime("%m/%d/%Y, %H:%M:%S")}}</li>
+                <li>Content: {{i[0]}}</li>
+            </ul>
+        </li>
+        <hr/>
+        {% endfor %}
+    {% endif %}
+</ul>
+{% endblock %}
+

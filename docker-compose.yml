@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: ./app
+    env_file:
+        - .env
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    expose:
+      - "${APP_PORT}"
+    volumes:
+      - ./app:/app
+    depends_on:
+      - postgres
+    networks:
+      - docker_network
+  
+  postgres:
+    build:
+      dockerfile: Dockerfile
+      context: ./postgres
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - ./postgres:/docker-entrypoint-initdb.d
+    networks:
+      - docker_network
+
+  hacker:
+    build: hacker
+    tty: true
+    depends_on:
+      - app
+    networks:
+      - docker_network
+
+networks:
+  docker_network:
+    driver: bridge

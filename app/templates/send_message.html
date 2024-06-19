@@ -1,0 +1,13 @@
+{% extends "home.html" %}
+{% block title %} Send message {% endblock %}
+{% block content %}
+<form action="#" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token }}"/>
+    <p>Recipient:</p>
+    <p><input type="text" name="recipient"/></p>
+    <p>Content:</p>
+    <p><textarea name="content" rows="10" cols="50">Enter your text here...</textarea></p>
+    <p><input type="submit" value="Send" /></p>
+</form>
+{% endblock %}
+
