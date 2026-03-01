@@ -32,14 +32,15 @@ The system uses a containerized setup for easy deployment and testing.
 
 ## Project Structure
 
-secure_messaging_app/
-├── app/               # Core application code (backend, routes, models, security logic) \
-├── hacker/            # Security testing / attack simulation module (for methodology/validation) \
-├── postgres/          # Database configuration, schema, migrations \
-├── docker-compose.yml # Orchestrates app + database services \
-├── .gitignore \
-└── LICENSE            # MIT License \
-
+```bash
+secure_messaging_app/ 
+├── app/               # Core application code (backend, routes, models, security logic) 
+├── hacker/            # Security testing / attack simulation module (for methodology/validation) 
+├── postgres/          # Database configuration, schema, migrations 
+├── docker-compose.yml # Orchestrates app + database services 
+├── .gitignore 
+└── LICENSE            # MIT License 
+```
 
 ## Installation & Running
 
